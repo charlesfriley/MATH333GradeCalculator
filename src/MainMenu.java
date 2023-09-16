@@ -105,21 +105,28 @@ public class MainMenu extends JPanel {
     }
 
     /* listeners */
+
+    /**
+     * Listener for if the user presses the calculate button
+     */
     public class CalculateButtonListener implements ActionListener
     {
       @Override
       public void actionPerformed(ActionEvent e) 
       {
-        System.out.println("Calculate");
+        sendToCalculator();
       }
     }
 
+    /**
+     * Listener for if the user presses the help button
+     */
     public class HelpButtonListener implements ActionListener
     {
       @Override
       public void actionPerformed(ActionEvent e) 
       {
-        System.out.println("Help");
+        Help.openHelpWindow();
       }
     }
 
@@ -131,13 +138,36 @@ public class MainMenu extends JPanel {
 
       @Override
       public void actionPerformed(ActionEvent e) {
-        System.out.println("Enter");
+        sendToCalculator();
       }
 
     }
 
 
+    /* methods */
 
+    /**
+     * Sends the formated numbers in the text fields to the calculator class
+     */
+    private void sendToCalculator()
+    {
+      String userQuiz = quizField.getText();
+        String userTest = testField.getText();
+
+        if (MainMenuResources.isCalculationReady(userQuiz, userTest))
+        {
+          System.out.println("READY");
+          int userQuizGrade = MainMenuResources.percentToInt(userQuiz);
+          int userTestGrade = MainMenuResources.percentToInt(userTest);
+          //TODO sent this userQuizGrade and userTestGrade info to the calculator class
+        }
+        else
+        {
+          JOptionPane.showMessageDialog(null,
+           "Please make sure that you entered your numbers\ncorrectly in this format: ##.## (Example: 98.24).", 
+           "Something went wrong...", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
 
 
 
