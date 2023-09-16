@@ -5,6 +5,10 @@ import javax.swing.JFrame;
  */
 public class Driver {
     
+    /**
+     * Create a MainMenu object and open it in a window.
+     * @param args unused
+     */
     public static void main(String[] args)
     {
         JFrame frame = new JFrame("MATH333 Grade Calculator");

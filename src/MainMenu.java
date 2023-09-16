@@ -10,17 +10,6 @@ import java.awt.event.ActionListener;
  */
 public class MainMenu extends JPanel {
 
-    /* basic layout for main menu
-
-      Welcome to the Grade Calculator!
-    Please enter your quiz and test grade
-            Quiz        Test
-            ____%       ____%
-               |Calculate|
-               
-                 |Help|
-     */
-
     /* Instance Variables */
     private JLabel welcomeLabel, inputInfoLabel, quizLabel, testLabel;
     private JTextField quizField, testField;
@@ -30,6 +19,9 @@ public class MainMenu extends JPanel {
 
 
     /* constructer */
+    /**
+     * Constructer for the Main Menu window.
+     */
     public MainMenu()
     {
       /* Set up listeners for buttons and text feild */
