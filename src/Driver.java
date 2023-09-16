@@ -12,5 +12,6 @@ public class Driver {
         frame.add(new MainMenu());
         frame.pack();
         frame.setVisible(true);
+        //TODO add a way to set the starting position of the window to the center of the screen.
     }
 }
