@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 /**
  * Class with methods to support the MainMenu class
  * NOTE TO SELF: To use this class, you have to create an instance of this class 
