@@ -10,12 +10,18 @@ A grade calculator for Prof. Brill's MATH333 class to calculate the best weighte
 
 -Help.java is the help window
 
+## Important Info
+All the math in this project will be done with ints, not doubles. So instead of working with a percentage like 89.56%, we will be working with an int like 8956. This makes the math easier for the computer to do since it will be iterating through milions of possiblities to find the best grades.
+
 ## Goals
 - code the logic behind the calculator
-- figure out how to format the information from the calculator nicely
+- create display to display the calculator's findings
 - make everything look better
-- fill out help window
+- fill out help window (only when done with everything else)
 
 ## Layout idea for calculation page
 ![image](Images/IdeaForCalculationPage.jpg)
 
+
+### info for next time
+I left off on line 154 in MainMenu.java. Need to create a class to recieve the information and compute it.
