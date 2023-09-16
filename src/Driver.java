@@ -1,7 +1,7 @@
 import javax.swing.JFrame;
 
 /**
- * Driver class for MATH333GradeCalculator
+ * Driver class for MATH333GradeCalculator, launches MainMenu
  */
 public class Driver {
     
