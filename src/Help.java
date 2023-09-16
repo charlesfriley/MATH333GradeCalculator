@@ -1,11 +1,17 @@
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 public class Help extends JPanel{
     
     /* instance variables */
+    private JLabel helpppppp;
 
     /* constructer */
+    public Help()
+    {
+        helpppppp = new JLabel("helpppppp");
+
+        this.add(helpppppp);
+    }
 
     /* methods */
 
