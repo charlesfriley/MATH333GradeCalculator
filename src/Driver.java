@@ -13,7 +13,7 @@ public class Driver {
     {
         JFrame frame = new JFrame("MATH333 Grade Calculator");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(new DisplayResults());
+        frame.add(new MainMenu());
         frame.pack();
         frame.setVisible(true);
         //TODO add a way to set the starting position of the window to the center of the screen.
