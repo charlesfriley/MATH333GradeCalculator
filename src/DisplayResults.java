@@ -71,3 +71,4 @@ public class DisplayResults extends JPanel{
 
 
 }
+
