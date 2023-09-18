@@ -18,11 +18,11 @@ public class Help extends JPanel{
 
     public static void openHelpWindow()
     {
-        JFrame frame = new JFrame("Help");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(new Help());
-        frame.pack();
-        frame.setVisible(true);
+        JFrame helpframe = new JFrame("Help");
+        helpframe.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        helpframe.add(new Help());
+        helpframe.pack();
+        helpframe.setVisible(true);
         //TODO add a way to set the starting position of the window to the center of the screen.
     }
 }
