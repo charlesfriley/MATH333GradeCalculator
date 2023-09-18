@@ -151,7 +151,12 @@ public class MainMenu extends JPanel {
           System.out.println("READY");
           int userQuizGrade = MainMenuResources.percentToInt(userQuiz);
           int userTestGrade = MainMenuResources.percentToInt(userTest);
-          //TODO sent this userQuizGrade and userTestGrade info to the calculator class
+          
+          JFrame frame = new JFrame("MATH333 Grade Calculator");
+          frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+          frame.add(new DisplayResults());
+          frame.pack();
+          frame.setVisible(true);
         }
         else
         {
