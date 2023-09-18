@@ -123,7 +123,7 @@ public class MainMenu extends JPanel {
     }
 
     /**
-     * Listener for if the user presses enter in the text field
+     * Listener for if the user presses enter while in the text field
      */
     public class TextFieldListener implements ActionListener
     {
@@ -139,7 +139,7 @@ public class MainMenu extends JPanel {
     /* methods */
 
     /**
-     * Sends the formated numbers in the text fields to the calculator class
+     * Sends the formated numbers in the text fields to the calculator class //TODO add the calculator class
      */
     private void sendToCalculator()
     {
