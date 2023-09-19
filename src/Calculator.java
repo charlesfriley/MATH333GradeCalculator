@@ -14,6 +14,9 @@ public class Calculator {
  *  {"Final Grade2", "Quiz Weight2", "Test Weight2", "Final Weight2", "Resulting Grade2"},
  *  ...
  * 
+ * Here is how i think this file will work: You will request a single line of information for the chart 
+ *  so this file needs 3 inputs, your final grade, quiz grade, and test grade
+ *  it will output an array of objects to be put into the final object[][] that the data table uses
  * 
  */
 
