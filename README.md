@@ -20,7 +20,7 @@ Just a reminder on how Prof. Brill will be grading us:
 
 -Help.java is the help window
 
--Calculator.java is where teh backend calculations happen
+-Calculator.java is where the backend calculations happen
 
 -DisplayResults is the GUI to see the calculated results
 
