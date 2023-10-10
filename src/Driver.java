@@ -15,7 +15,7 @@ public class Driver {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(new MainMenu());
         frame.pack();
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-        //TODO add a way to set the starting position of the window to the center of the screen.
     }
 }
