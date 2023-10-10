@@ -148,35 +148,39 @@ public class MainMenu extends JPanel {
     private void sendToCalculator()
     {
       String userQuiz = quizField.getText();
-        String userTest = testField.getText();
+      String userTest = testField.getText();
 
-        if (MainMenuResources.isCalculationReady(userQuiz, userTest))
-        {
-          setCursorToWait();
+      if (MainMenuResources.isCalculationReady(userQuiz, userTest))
+      {
+        setCursorToWait();
 
-          System.out.println("READY");
-          int userQuizGrade = MainMenuResources.percentToInt(userQuiz);
-          int userTestGrade = MainMenuResources.percentToInt(userTest);
-          
-          JFrame frame = new JFrame("MATH333 Grade Calculator");
-          frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-          frame.add(new DisplayResults());
-          frame.pack();
-          frame.setLocationRelativeTo(null);
-          frame.setVisible(true);
+        System.out.println("READY");
+        int userQuizGrade = MainMenuResources.percentToInt(userQuiz);
+        int userTestGrade = MainMenuResources.percentToInt(userTest);
 
-          setCursorToDefult();
-        }
-        else
-        {
-          ImageIcon coolBrillIcon = new ImageIcon("src/Images/CoolBrill.jpg");
-          Image image = coolBrillIcon.getImage();
-          Image newImg = image.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH);
-          coolBrillIcon = new ImageIcon(newImg);
-          JOptionPane.showMessageDialog(null,
-           "Please make sure that you entered your numbers\ncorrectly in this format: ##.## (Example: 98.24).", 
-           "Something went wrong...", JOptionPane.WARNING_MESSAGE, coolBrillIcon);
-        }
+        System.out.println(userQuizGrade);
+        System.out.println(userTestGrade);
+        
+        JFrame frame = new JFrame("MATH333 Grade Calculator");
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.add(new DisplayResults());
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+
+        setCursorToDefult();
+      }
+      else
+      {
+        ImageIcon coolBrillIcon = new ImageIcon("src/Images/CoolBrill.jpg");
+        Image image = coolBrillIcon.getImage();
+        Image newImg = image.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH);
+        coolBrillIcon = new ImageIcon(newImg);
+
+        JOptionPane.showMessageDialog(null,
+          "Please make sure that you entered your numbers\ncorrectly in this format: ##.## (Example: 98.24).", 
+          "Something went wrong...", JOptionPane.INFORMATION_MESSAGE, coolBrillIcon);
+      }
     }
 
     /**
