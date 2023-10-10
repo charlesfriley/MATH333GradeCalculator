@@ -39,6 +39,7 @@ public class DisplayResults extends JPanel{
         NewTableListener ntl = new NewTableListener();
 
         this.setLayout(new BorderLayout());
+        this.setBackground(Theme.BACKGROUND_GRAY);
 
         /* format and create table */
         columnNames = new String[] {"Final Grade", //TODO put teh jtable main display in another file.
@@ -72,9 +73,15 @@ public class DisplayResults extends JPanel{
         };
 
         table = new JTable(data, columnNames);
+        table.setBackground(Theme.TABLE_BACKGROUND);
+        table.setForeground(Theme.TABLE_TEXT);
+        table.setGridColor(Theme.GRID);
+        table.getTableHeader().setBackground(Theme.TABLE_HEADER_BACKGROUND);
+        table.getTableHeader().setForeground(Theme.TABLE_TEXT);
 
         /* create combo box panel */
         comboBoxPanel = new JPanel();
+        comboBoxPanel.setBackground(Theme.BACKGROUND_GRAY);
         comboBoxPanel.setLayout(new BoxLayout(comboBoxPanel, BoxLayout.X_AXIS));
         
         selectionBox = new JComboBox(comboArray);
@@ -82,11 +89,11 @@ public class DisplayResults extends JPanel{
         selectionBox.setMaximumSize(selectionBox.getPreferredSize());
         selectionBox.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         comboLabel = new JLabel("Display table in range of:  ");
+        comboLabel.setForeground(Theme.TEXT_WHITE);
 
         newTableButton = new JButton("Display Table"); 
         newTableButton.addActionListener(ntl);
         newTableButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-
 
         comboBoxPanel.add(Box.createHorizontalStrut(15));
         comboBoxPanel.add(comboLabel);
@@ -95,9 +102,11 @@ public class DisplayResults extends JPanel{
 
         /* create calculate value panel */
         calculateValuesPanel = new JPanel();
+        calculateValuesPanel.setBackground(Theme.BACKGROUND_GRAY);
         calculateValuesPanel.setLayout(new BoxLayout(calculateValuesPanel, BoxLayout.X_AXIS));
 
         calculateValuesLabel = new JLabel("Enter a specific final grade (##.##)   ");
+        calculateValuesLabel.setForeground(Theme.TEXT_WHITE);
 
         calculateTextField = new JTextField(5); 
         calculateTextField.addActionListener(cl);
@@ -117,6 +126,7 @@ public class DisplayResults extends JPanel{
 
         /* create South panel */
         southPanel = new JPanel();
+        southPanel.setBackground(Theme.BACKGROUND_GRAY);
         southPanel.setLayout(new BoxLayout(southPanel, BoxLayout.Y_AXIS));
         southPanel.add(comboBoxPanel);
         southPanel.add(calculateValuesPanel);
@@ -133,6 +143,7 @@ public class DisplayResults extends JPanel{
 
         // __________________________
         scrollPane = new JScrollPane(table);
+        // scrollPane.setBackground(Theme.BACKGROUND_GRAY);
 
         this.add(scrollPane, BorderLayout.CENTER);
         this.add(southPanel, BorderLayout.SOUTH);

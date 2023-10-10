@@ -1,3 +1,5 @@
+
+
 /**
  * Class with methods to support the MainMenu class
  * NOTE TO SELF: To use this class, you have to create an instance of this class 
@@ -5,6 +7,7 @@
  *  you can call a method like m.myMethod();
  */
 public class MainMenuResources {
+    
     
     /**
      * Converts a string of the form 12.34% and converts it to a int 1234. The input

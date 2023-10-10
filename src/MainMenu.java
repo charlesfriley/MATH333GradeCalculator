@@ -1,5 +1,5 @@
 import javax.swing.*;
-
+import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -31,10 +31,13 @@ public class MainMenu extends JPanel {
       CalculateButtonListener cbl = new CalculateButtonListener();
       HelpButtonListener hbl = new HelpButtonListener();
       TextFieldListener tfl = new TextFieldListener();
+      
 
       welcomePanel = new JPanel();
       welcomePanel.setLayout(new BoxLayout(welcomePanel, BoxLayout.X_AXIS));
+      welcomePanel.setBackground(Theme.BACKGROUND_GRAY);
         welcomeLabel = new JLabel("Welcome to the Calculator!");
+        welcomeLabel.setForeground(Theme.TEXT_WHITE);
       welcomePanel.add(Box.createHorizontalGlue());
       welcomePanel.add(welcomeLabel);
       welcomePanel.add(Box.createHorizontalGlue());
@@ -42,7 +45,9 @@ public class MainMenu extends JPanel {
 
       inputInfoPanel = new JPanel();
       inputInfoPanel.setLayout(new BoxLayout(inputInfoPanel, BoxLayout.X_AXIS));
+      inputInfoPanel.setBackground(Theme.BACKGROUND_GRAY);
         inputInfoLabel = new JLabel("Please enter your quiz and test grade");
+        inputInfoLabel.setForeground(Theme.TEXT_WHITE);
       inputInfoPanel.add(Box.createHorizontalGlue());
       inputInfoPanel.add(inputInfoLabel);
       inputInfoPanel.add(Box.createHorizontalGlue());
@@ -50,9 +55,12 @@ public class MainMenu extends JPanel {
 
       fieldLabelPanel = new JPanel();
       fieldLabelPanel.setLayout(new BoxLayout(fieldLabelPanel, BoxLayout.X_AXIS));
+      fieldLabelPanel.setBackground(Theme.BACKGROUND_GRAY);
         quizLabel = new JLabel("Quiz %");
+        quizLabel.setForeground(Theme.TEXT_WHITE);
         quizLabel.setToolTipText("Enter Quiz Grade");
         testLabel = new JLabel("Test %"); //TODO set all the tool tip text
+        testLabel.setForeground(Theme.TEXT_WHITE);
       fieldLabelPanel.add(Box.createHorizontalGlue());
       fieldLabelPanel.add(quizLabel);
       fieldLabelPanel.add(Box.createHorizontalStrut(75));
@@ -61,6 +69,7 @@ public class MainMenu extends JPanel {
 
       fieldsPanel = new JPanel();
       fieldsPanel.setLayout(new BoxLayout(fieldsPanel, BoxLayout.X_AXIS));
+      fieldsPanel.setBackground(Theme.BACKGROUND_GRAY);
         quizField = new JTextField();
         quizField.addActionListener(tfl);
         testField = new JTextField();
@@ -73,6 +82,7 @@ public class MainMenu extends JPanel {
 
       calculatePanel = new JPanel();
       calculatePanel.setLayout(new BoxLayout(calculatePanel, BoxLayout.X_AXIS));
+      calculatePanel.setBackground(Theme.BACKGROUND_GRAY);
         calculateButton = new JButton("Calculate");
         calculateButton.addActionListener(cbl);
       calculatePanel.add(Box.createHorizontalGlue());
@@ -81,6 +91,7 @@ public class MainMenu extends JPanel {
 
       helpPanel = new JPanel();
       helpPanel.setLayout(new BoxLayout(helpPanel, BoxLayout.X_AXIS));
+      helpPanel.setBackground(Theme.BACKGROUND_GRAY);
         helpButton = new JButton("Help");
         helpButton.addActionListener(hbl);
       helpPanel.add(Box.createHorizontalGlue());
@@ -89,6 +100,7 @@ public class MainMenu extends JPanel {
 
       centerPanel = new JPanel();
       centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
+      centerPanel.setBackground(new Color(255,0,0));
       centerPanel.add(welcomePanel);
       centerPanel.add(inputInfoPanel);
       centerPanel.add(fieldLabelPanel);
@@ -97,6 +109,7 @@ public class MainMenu extends JPanel {
       centerPanel.add(helpPanel);
 
       setCursorToDefult();
+      this.setBackground(Theme.BACKGROUND_GRAY);
       this.add(centerPanel);
     }
 
