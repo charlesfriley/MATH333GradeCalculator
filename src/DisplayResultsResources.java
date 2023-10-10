@@ -12,5 +12,7 @@ public class DisplayResultsResources {
      * // basicly this file needs to request a calculation from calculator.java at a certain final, quiz, and test grade. 
      * // then it will request another, and another, and another
      * // it will orginize all this code into a Object[][] that the table in DisplayResults.java can use.
+     * 
+     * // ALSO THIS FILE SHOULD BE ABLE TO ORGINIZE THIS FOR TERMINAL USE ONLY so that people can use it on online web compilers.
      */
 }
