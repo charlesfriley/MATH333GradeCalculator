@@ -1,6 +1,7 @@
 import javax.swing.*;
 
 import java.awt.Cursor;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -168,9 +169,13 @@ public class MainMenu extends JPanel {
         }
         else
         {
+          ImageIcon coolBrillIcon = new ImageIcon("src/Images/CoolBrill.jpg");
+          Image image = coolBrillIcon.getImage();
+          Image newImg = image.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH);
+          coolBrillIcon = new ImageIcon(newImg);
           JOptionPane.showMessageDialog(null,
            "Please make sure that you entered your numbers\ncorrectly in this format: ##.## (Example: 98.24).", 
-           "Something went wrong...", JOptionPane.INFORMATION_MESSAGE);
+           "Something went wrong...", JOptionPane.WARNING_MESSAGE, coolBrillIcon);
         }
     }
 
