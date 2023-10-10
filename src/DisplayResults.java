@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.awt.BorderLayout;
+
 
 public class DisplayResults extends JPanel{
     
@@ -18,6 +20,7 @@ public class DisplayResults extends JPanel{
     /* constructer */
     public DisplayResults() 
     {
+        this.setLayout(new BorderLayout());
         testButton = new JButton("Test Button");
 
 
@@ -121,14 +124,18 @@ public class DisplayResults extends JPanel{
         // step 1 make table
         // make buttons in a y box layout
         // add buttons and table to x box
-        // add that xbox to the scrollpane
+        // add that xbox to the scrollpane FIXME this step didnt work, fix later
         // add scroll pane to center layout
 
         // manual adding will be done on the bottom layout
 
+        // __________________________
         scrollPane = new JScrollPane(dataAndButtonPanel);
 
-        this.add(scrollPane);
+        this.add(scrollPane, BorderLayout.CENTER);
+
+        // this.add(dataAndButtonPanel);
+
 
     }
 
