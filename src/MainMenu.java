@@ -1,4 +1,6 @@
 import javax.swing.*;
+
+import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -93,6 +95,7 @@ public class MainMenu extends JPanel {
       centerPanel.add(calculatePanel);
       centerPanel.add(helpPanel);
 
+      setCursorToDefult();
       this.add(centerPanel);
     }
 
@@ -148,6 +151,8 @@ public class MainMenu extends JPanel {
 
         if (MainMenuResources.isCalculationReady(userQuiz, userTest))
         {
+          setCursorToWait();
+
           System.out.println("READY");
           int userQuizGrade = MainMenuResources.percentToInt(userQuiz);
           int userTestGrade = MainMenuResources.percentToInt(userTest);
@@ -156,7 +161,10 @@ public class MainMenu extends JPanel {
           frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
           frame.add(new DisplayResults());
           frame.pack();
+          frame.setLocationRelativeTo(null);
           frame.setVisible(true);
+
+          setCursorToDefult();
         }
         else
         {
@@ -166,6 +174,29 @@ public class MainMenu extends JPanel {
         }
     }
 
+    /**
+     * Sets all the components in the Main Menu to display the waiting cursor animation
+     */
+    private void setCursorToWait()
+    {
+      this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+      helpButton.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+      calculateButton.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+      quizField.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+      testField.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+    }
+
+    /**
+     * Sets all the components in the Main Menu to use the customized defult values
+     */
+    private void setCursorToDefult()
+    {
+      this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+      helpButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+      calculateButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+      quizField.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
+      testField.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
+    }
 
 
     
