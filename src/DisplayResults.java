@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.Cursor;
+import java.awt.Image;
+import java.awt.event.*;
 
 
 public class DisplayResults extends JPanel{
@@ -20,19 +22,22 @@ public class DisplayResults extends JPanel{
 
 
     // south panel
-    private JPanel southPanel, comboBoxPanel, customValuesPanel;
+    private JPanel southPanel, comboBoxPanel, calculateValuesPanel;
     private String[] comboArray = {"-", "0%-5%", "5%-10%", "10%-15%", "15%-20%", "20%-25%", 
     "25%-30%", "30%-35%", "35%-40%", "40%-45%", "45%-50%", "50%-55%", "55%,60%","60%-65%", 
     "65%-70%", "70%-75%", "75%-80%", "80%-85%", "85%-90%", "90%-95%", "95%-100%",};
     private JComboBox selectionBox;
-    private JButton newTableButton, customButton;
-    private JLabel comboLabel, customValuesLabel;
-    private JTextField customTextField;
+    private JButton newTableButton, calculateButton;
+    private JLabel comboLabel, calculateValuesLabel;
+    private JTextField calculateTextField;
 
 
     /* constructer */
     public DisplayResults() 
     {
+        CalculateListener cl = new CalculateListener();
+        NewTableListener ntl = new NewTableListener();
+
         this.setLayout(new BorderLayout());
 
         /* format and create table */
@@ -78,7 +83,8 @@ public class DisplayResults extends JPanel{
         selectionBox.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         comboLabel = new JLabel("Display table in range of:  ");
 
-        newTableButton = new JButton("Display Table"); //TODO add listener, this button should open a new window with a table of values between specified amount in combo cox
+        newTableButton = new JButton("Display Table"); 
+        newTableButton.addActionListener(ntl);
         newTableButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
 
@@ -87,31 +93,33 @@ public class DisplayResults extends JPanel{
         comboBoxPanel.add(selectionBox);
         comboBoxPanel.add(newTableButton);
 
-        /* create custom value panel */
-        customValuesPanel = new JPanel();
-        customValuesPanel.setLayout(new BoxLayout(customValuesPanel, BoxLayout.X_AXIS));
+        /* create calculate value panel */
+        calculateValuesPanel = new JPanel();
+        calculateValuesPanel.setLayout(new BoxLayout(calculateValuesPanel, BoxLayout.X_AXIS));
 
-        customValuesLabel = new JLabel("Enter a specific final grade (##.##)   ");
+        calculateValuesLabel = new JLabel("Enter a specific final grade (##.##)   ");
 
-        customTextField = new JTextField(5); //TODO add listener for if the user presses enter AND add a check if the user entered good values similar to what was done in teh main menu.
-        customTextField.setMaximumSize(customTextField.getPreferredSize()); 
-        customTextField.setMinimumSize(customTextField.getPreferredSize());
+        calculateTextField = new JTextField(5); 
+        calculateTextField.addActionListener(cl);
+        calculateTextField.setMaximumSize(calculateTextField.getPreferredSize()); 
+        calculateTextField.setMinimumSize(calculateTextField.getPreferredSize());
 
-        customButton = new JButton("Calculate"); //TODO add listener and this button should calculate a certain value and either open it in a new panel OR add it to the south panel and repaint the panel. I like the second idea better. If i do that then the pannel should dissapear if the user types in nothing at all and presses enter.
-        customButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        calculateButton = new JButton("Calculate"); 
+        calculateButton.addActionListener(cl);
+        calculateButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
-        customValuesPanel.add(Box.createHorizontalStrut(15));
-        customValuesPanel.add(customValuesLabel);
-        customValuesPanel.add(customTextField);
-        customValuesPanel.add(customButton);
-        customValuesPanel.add(Box.createHorizontalStrut(15));
+        calculateValuesPanel.add(Box.createHorizontalStrut(15));
+        calculateValuesPanel.add(calculateValuesLabel);
+        calculateValuesPanel.add(calculateTextField);
+        calculateValuesPanel.add(calculateButton);
+        calculateValuesPanel.add(Box.createHorizontalStrut(15));
 
 
         /* create South panel */
         southPanel = new JPanel();
         southPanel.setLayout(new BoxLayout(southPanel, BoxLayout.Y_AXIS));
         southPanel.add(comboBoxPanel);
-        southPanel.add(customValuesPanel);
+        southPanel.add(calculateValuesPanel);
 
 
 
@@ -136,8 +144,66 @@ public class DisplayResults extends JPanel{
 
     /* listeners */
 
+    /**
+     * Listener for if the user presses the Display Table button
+     */
+    public class NewTableListener implements ActionListener //TODO this  should open a new window with a table of values between specified amount in combo box
+    {
+      @Override
+      public void actionPerformed(ActionEvent e) 
+      {
+        int s = selectionBox.getSelectedIndex();
+        System.out.println(s);
+      }
+    }
+
+    /**
+     * Listener for if the user presses the calculate button or if the user presses enter while in the text field
+     */
+    public class CalculateListener implements ActionListener //TODO  this button should calculate a certain value and either open it in a new panel OR add it to the south panel and repaint the panel. I like the second idea better. If i do that then the pannel should dissapear if the user types in nothing at all and presses enter.
+    {                                                        //TODO  add a check if the user entered good values similar to what was done in teh main menu.
+      @Override
+      public void actionPerformed(ActionEvent e) 
+      {
+        System.out.println("Calculate");
+        sendToCalculator();
+      }
+    }
+
+
     /* methods */
 
+    private void sendToCalculator()
+    {
+        String userFinal = calculateTextField.getText();
+
+        if (MainMenuResources.isCalculationReady(userFinal, userFinal))
+        {
+            System.out.println("Custom calculation Ready");
+
+            //TODO set cursor to wait animation
+
+            int userFinalGrade = MainMenuResources.percentToInt(userFinal);
+
+            System.out.println(userFinalGrade);
+
+            //TODO actually send to the calculator and get results
+
+            //TODO set cursor to defult
+        }
+        else 
+        {
+        ImageIcon coolBrillIcon = new ImageIcon("src/Images/CoolBrill.jpg");
+        Image image = coolBrillIcon.getImage();
+        Image newImg = image.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH);
+        coolBrillIcon = new ImageIcon(newImg);
+
+        JOptionPane.showMessageDialog(null,
+            "Please make sure that you entered your numbers\ncorrectly in this format: ##.## (Example: 98.24).", 
+            "Something went wrong...", JOptionPane.INFORMATION_MESSAGE, coolBrillIcon);
+        }
+
+    }
 
 }
 
