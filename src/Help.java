@@ -2,6 +2,7 @@ import javax.swing.*;
 
 public class Help extends JPanel{
     
+    
     /* instance variables */
     private JLabel helpppppp;
 
