@@ -1,11 +1,13 @@
 import javax.swing.*;
-import java.awt.BorderLayout;
-import java.awt.Cursor;
-import java.awt.Image;
+import javax.swing.plaf.basic.BasicScrollBarUI;
+
 import java.awt.event.*;
 
 
-public class DisplayResults extends JPanel{
+import java.awt.*;
+
+
+public class DisplayResults extends JPanel {
     
     /* instance variables */ //TODO make this public or private respectuvly
 
@@ -17,7 +19,7 @@ public class DisplayResults extends JPanel{
     /**
      * scrollPane contanes the table and buttons
      */
-    private JScrollPane scrollPane;
+    private JScrollPane scrollPane; //unused because of bug i cannot figure out how to fix
 
 
 
@@ -142,10 +144,15 @@ public class DisplayResults extends JPanel{
         // manual adding will be done on the bottom layout
 
         // __________________________
-        scrollPane = new JScrollPane(table);
-        // scrollPane.setBackground(Theme.BACKGROUND_GRAY);
 
-        this.add(scrollPane, BorderLayout.CENTER);
+        // This section was removed because of bug where background is white
+        // scrollPane = new JScrollPane(table);
+        // scrollPane.setBackground(Theme.TABLE_HEADER_BACKGROUND); //this does not seem to be working as I thought it would
+        // scrollPane.getVerticalScrollBar().setUI(new CustomScrollbarUI());
+
+
+
+        this.add(table, BorderLayout.CENTER);
         this.add(southPanel, BorderLayout.SOUTH);
         
         // this.add(dataAndButtonPanel);
@@ -214,6 +221,36 @@ public class DisplayResults extends JPanel{
             "Something went wrong...", JOptionPane.INFORMATION_MESSAGE, coolBrillIcon);
         }
 
+    }
+
+
+    // Custom scrollbar UI class
+    class CustomScrollbarUI extends BasicScrollBarUI {
+
+        @Override
+        protected void paintTrack(Graphics g, JComponent c, Rectangle trackBounds) {
+            // Change the background color of the scrollbar track here
+            g.setColor(Theme.TABLE_BACKGROUND);
+            g.fillRect(trackBounds.x, trackBounds.y, trackBounds.width, trackBounds.height);
+        }
+
+        @Override
+        protected void paintThumb(Graphics g, JComponent c, Rectangle thumbBounds) {
+            // Change the background color of the scrollbar thumb here
+            g.setColor(Theme.TABLE_HEADER_BACKGROUND);
+            g.fillRect(thumbBounds.x, thumbBounds.y, thumbBounds.width, thumbBounds.height);
+        }
+
+        @Override
+        protected void paintDecreaseHighlight(Graphics g) {
+            // Do nothing to remove the up arrow
+        }
+    
+        @Override
+        protected void paintIncreaseHighlight(Graphics g) {
+            // Do nothing to remove the down arrow
+        }
+    
     }
 
 }
