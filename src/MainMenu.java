@@ -20,7 +20,9 @@ public class MainMenu extends JPanel {
 
     private JPanel welcomePanel, inputInfoPanel, fieldLabelPanel, fieldsPanel, calculatePanel, helpPanel, centerPanel;
 
-
+    // these variables will be set to whatever value the user puts in the text feilds
+    private static int mainQuizGrade, mainTestGrade;
+    
     /* constructer */
     /**
      * Constructer for the Main Menu window.
@@ -172,7 +174,9 @@ public class MainMenu extends JPanel {
         int userTestGrade = MainMenuResources.percentToInt(userTest);
 
         System.out.println(userQuizGrade);
+        setMainQuizGrade(userQuizGrade);
         System.out.println(userTestGrade);
+        setMainTestGrade(userTestGrade);
         
         JFrame frame = new JFrame("MATH333 Grade Calculator");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -219,6 +223,25 @@ public class MainMenu extends JPanel {
       quizField.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
       testField.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
     }
+
+
+    private void setMainQuizGrade(int num)
+    {
+      mainQuizGrade = num;
+    }
+    private void setMainTestGrade(int num)
+    {
+      mainTestGrade = num;
+    }
+    public static int getMainQuizGrade()
+    {
+      return mainQuizGrade;
+    }
+    public static int getMainTestGrade()
+    {
+      return mainTestGrade;
+    }
+
 
 
     
