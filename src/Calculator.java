@@ -16,6 +16,7 @@ public class Calculator {
 
     int accuarcyFactor, bestQuizWeight, bestTestWeight, bestFinalWeight, bestClassGrade;
 
+    //TODO javadoc
     public Calculator()
     {
         accuarcyFactor = 100; // when set to 1, then percents are read up to the ones place of accuacy, if set to 10, accuracy is read up to the tenths place, if set to 100, accuacy is up to the hundreths place
@@ -23,6 +24,17 @@ public class Calculator {
         bestFinalWeight = -1;
         bestTestWeight = -1;
         bestClassGrade = -1;
+    }
+    //TODO javadoc
+    public Calculator(int quizGrade, int testGrade, int finalGrade)
+    {
+        accuarcyFactor = 100; // when set to 1, then percents are read up to the ones place of accuacy, if set to 10, accuracy is read up to the tenths place, if set to 100, accuacy is up to the hundreths place
+        bestQuizWeight = -1;
+        bestFinalWeight = -1;
+        bestTestWeight = -1;
+        bestClassGrade = -1;
+
+        calculate(quizGrade,testGrade,finalGrade);
     }
     /**
      * Recieves the user's test, quiz, and final grade then calculates how much each catagory should be 
@@ -35,8 +47,6 @@ public class Calculator {
     public void calculate(int quizGrade, int testGrade, int finalGrade)
     {
         int iteratedClassGrade;
-        int maxClassGrade = 0;
-        int maxQ = 0, maxT = 0, maxF = 0;
         int counter = 0;
 
 
@@ -48,13 +58,12 @@ public class Calculator {
                 if (T >= (20 * accuarcyFactor)) // T has to be in the range of 20% ≤ T ≤ 50%, but it is impossible to get over 50% so that does not need to be here
                 {
                     iteratedClassGrade = ((quizGrade * Q) + (testGrade * T) + (finalGrade * F)) / (100 * accuarcyFactor);
-                    if (iteratedClassGrade > maxClassGrade)
+                    if (iteratedClassGrade > bestClassGrade)
                     {
-                        maxClassGrade = iteratedClassGrade;
-                        maxQ = Q;
-                        maxT = T;
-                        maxF = F;
-                        // System.out.println(maxClassGrade);
+                        bestClassGrade = iteratedClassGrade;
+                        bestQuizWeight = Q;
+                        bestTestWeight = T;
+                        bestFinalWeight = F;
                     }
                     counter++;
                 }
@@ -63,19 +72,41 @@ public class Calculator {
 
 
         System.out.println("Count: " + counter);
-        System.out.println("Max Class Grade = " + maxClassGrade + " with Q = " + maxQ + ", T = " + maxT + ", and F = " + maxF);
         
 
     }
 
-//counting for accuarcy
-// 20181
-// 18210801
-// 841138817
+    /* other methods */
+
+    /**
+     * Get the Max class grade for this itteration. Return best class grade or -1 if calculation has not been run yet.
+     * @return best class grade or -1 if calculation has not been run yet. use calculate()
+     */
+    public int getBestClassGrade()
+    {
+        return bestClassGrade;
+    }
+    //TODO add javadoc to these
+    public int getBestQuizWeight()
+    {
+        return bestQuizWeight;
+    }
+
+    public int getBestTestWeight()
+    {
+        return bestTestWeight;
+    }
+    
+    public int getBestFinalWeight()
+    {
+        return bestFinalWeight;
+    }
+
+
     public static void main(String[] args)
     {
-        Calculator c = new Calculator();
-        c.calculate(9000, 9110, 9100);
+        Calculator c = new Calculator(9000, 9110, 9500);
+        System.out.println("Max Class Grade = " + c.getBestClassGrade() + " with Q = " + c.getBestQuizWeight() + ", T = " + c.getBestTestWeight() + ", and F = " + c.getBestFinalWeight());
     }
 
 }
