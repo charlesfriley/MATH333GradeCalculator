@@ -23,8 +23,8 @@ public class DisplayResultsResources {
         
         int finalGradeIterator = 500; // each itteration, this variable will go from 0% to 5% to 10% and so on by getting multiplied by the row variable below
 
-        int tempQuizGrade = 8600;
-        int tempTestGrade = 9000;
+        int tempQuizGrade = MainMenu.getMainQuizGrade();
+        int tempTestGrade = MainMenu.getMainTestGrade();
         for (int row = 0; row < 21; row++) {
 
             int finalGrade = finalGradeIterator * row;
