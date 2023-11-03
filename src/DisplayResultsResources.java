@@ -15,4 +15,54 @@ public class DisplayResultsResources {
      * 
      * // ALSO THIS FILE SHOULD BE ABLE TO ORGINIZE THIS FOR TERMINAL USE ONLY so that people can use it on online web compilers.
      */
+
+    
+    public static Object[][] makeTableObjectArray()
+    {
+        Object[][] objectArray = new Object[21][5];
+        
+        int finalGradeIterator = 500; // each itteration, this variable will go from 0% to 5% to 10% and so on by getting multiplied by the row variable below
+
+        int tempQuizGrade = 8600;
+        int tempTestGrade = 9000;
+        for (int row = 0; row < 21; row++) {
+
+            int finalGrade = finalGradeIterator * row;
+
+            Calculator c = new Calculator(tempQuizGrade, tempTestGrade, finalGrade);
+
+
+            objectArray[row][0] = intToPercent(finalGrade);
+            objectArray[row][1] = intToPercent(c.getBestQuizWeight());
+            objectArray[row][2] = intToPercent(c.getBestTestWeight());
+            objectArray[row][3] = intToPercent(c.getBestFinalWeight());
+            objectArray[row][4] = intToPercent(c.getBestClassGrade());
+        }
+
+
+        return objectArray;
+    }
+
+
+    public static String intToPercent(int num)
+    {
+        String numString = Integer.toString(num);
+
+        while (true) { //add "0" as padding to start of numbers that are not long enough
+            if (numString.length() < 4)
+            {
+                numString = "0" + numString;
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        String numStringBegin = numString.substring(0, numString.length() - 2);
+        String numStringEnd = numString.substring(numString.length() - 2, numString.length());
+
+        return numStringBegin + "." + numStringEnd + "%";
+    }
+
 }

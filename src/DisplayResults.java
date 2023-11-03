@@ -21,8 +21,6 @@ public class DisplayResults extends JPanel {
      */
     private JScrollPane scrollPane; //unused because of bug i cannot figure out how to fix
 
-
-
     // south panel
     private JPanel southPanel, comboBoxPanel, calculateValuesPanel;
     private String[] comboArray = {"-", "0%-5%", "5%-10%", "10%-15%", "15%-20%", "20%-25%", 
@@ -50,29 +48,30 @@ public class DisplayResults extends JPanel {
                                    "Final Weight",
                                    "Resulting Grade"};
 
-        data = new Object[][] { //TODO change to use the calculator class
-        {"1Test", "two", (Integer) 3, (Integer) 4, "1Grade"},
-        {"2Test", "three", (Integer)5, (Integer) 6, "2Grade"},
-        {"3Test", "four", (Integer)7, (Integer) 8, "3Grade"},
-        {"1Test", "two", (Integer) 3, (Integer) 4, "1Grade"},
-        {"2Test", "three", (Integer)5, (Integer) 6, "2Grade"},
-        {"3Test", "four", (Integer)7, (Integer) 8, "3Grade"},
-        {"1Test", "two", (Integer) 3, (Integer) 4, "1Grade"},
-        {"2Test", "three", (Integer)5, (Integer) 6, "2Grade"},
-        {"3Test", "four", (Integer)7, (Integer) 8, "3Grade"},
-        {"1Test", "two", (Integer) 3, (Integer) 4, "1Grade"},
-        {"2Test", "three", (Integer)5, (Integer) 6, "2Grade"},
-        {"3Test", "four", (Integer)7, (Integer) 8, "3Grade"},
-        {"1Test", "two", (Integer) 3, (Integer) 4, "1Grade"},
-        {"2Test", "three", (Integer)5, (Integer) 6, "2Grade"},
-        {"3Test", "four", (Integer)7, (Integer) 8, "3Grade"},
-        {"1Test", "two", (Integer) 3, (Integer) 4, "1Grade"},
-        {"2Test", "three", (Integer)5, (Integer) 6, "2Grade"},
-        {"3Test", "four", (Integer)7, (Integer) 8, "3Grade"},
-        {"1Test", "two", (Integer) 3, (Integer) 4, "1Grade"},
-        {"2Test", "three", (Integer)5, (Integer) 6, "2Grade"},
-        {"3Test", "four", (Integer)7, (Integer) 8, "3Grade"},
-        };
+        data = DisplayResultsResources.makeTableObjectArray();
+        // data = new Object[][] { //TODO change to use the calculator class
+        // {"1Test", "two", (Integer) 3, (Integer) 4, "1Grade"},
+        // {"2Test", "three", (Integer)5, (Integer) 6, "2Grade"},
+        // {"3Test", "four", (Integer)7, (Integer) 8, "3Grade"},
+        // {"1Test", "two", (Integer) 3, (Integer) 4, "1Grade"},
+        // {"2Test", "three", (Integer)5, (Integer) 6, "2Grade"},
+        // {"3Test", "four", (Integer)7, (Integer) 8, "3Grade"},
+        // {"1Test", "two", (Integer) 3, (Integer) 4, "1Grade"},
+        // {"2Test", "three", (Integer)5, (Integer) 6, "2Grade"},
+        // {"3Test", "four", (Integer)7, (Integer) 8, "3Grade"},
+        // {"1Test", "two", (Integer) 3, (Integer) 4, "1Grade"},
+        // {"2Test", "three", (Integer)5, (Integer) 6, "2Grade"},
+        // {"3Test", "four", (Integer)7, (Integer) 8, "3Grade"},
+        // {"1Test", "two", (Integer) 3, (Integer) 4, "1Grade"},
+        // {"2Test", "three", (Integer)5, (Integer) 6, "2Grade"},
+        // {"3Test", "four", (Integer)7, (Integer) 8, "3Grade"},
+        // {"1Test", "two", (Integer) 3, (Integer) 4, "1Grade"},
+        // {"2Test", "three", (Integer)5, (Integer) 6, "2Grade"},
+        // {"3Test", "four", (Integer)7, (Integer) 8, "3Grade"},
+        // {"1Test", "two", (Integer) 3, (Integer) 4, "1Grade"},
+        // {"2Test", "three", (Integer)5, (Integer) 6, "2Grade"},
+        // {"3Test", "four", (Integer)7, (Integer) 8, "3Grade"},
+        // };
 
         table = new JTable(data, columnNames);
         table.setBackground(Theme.TABLE_BACKGROUND);
@@ -151,7 +150,7 @@ public class DisplayResults extends JPanel {
         // scrollPane.getVerticalScrollBar().setUI(new CustomScrollbarUI());
 
 
-
+        this.add(table.getTableHeader(), BorderLayout.NORTH);
         this.add(table, BorderLayout.CENTER);
         this.add(southPanel, BorderLayout.SOUTH);
         
@@ -183,7 +182,6 @@ public class DisplayResults extends JPanel {
       @Override
       public void actionPerformed(ActionEvent e) 
       {
-        System.out.println("Calculate");
         sendToCalculator();
       }
     }
