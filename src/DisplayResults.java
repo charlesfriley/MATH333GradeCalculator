@@ -26,7 +26,7 @@ public class DisplayResults extends JPanel {
     private String[] comboArray = {"-", "0%-5%", "5%-10%", "10%-15%", "15%-20%", "20%-25%", 
     "25%-30%", "30%-35%", "35%-40%", "40%-45%", "45%-50%", "50%-55%", "55%,60%","60%-65%", 
     "65%-70%", "70%-75%", "75%-80%", "80%-85%", "85%-90%", "90%-95%", "95%-100%",};
-    private JComboBox selectionBox;
+    public static JComboBox selectionBox; //this is public so that the displayResultsResources can read the value in the box
     private JButton newTableButton, calculateButton;
     private JLabel comboLabel, calculateValuesLabel;
     private JTextField calculateTextField;
@@ -40,6 +40,27 @@ public class DisplayResults extends JPanel {
 
         this.setLayout(new BorderLayout());
         this.setBackground(Theme.BACKGROUND_GRAY);
+
+        /* create combo box panel */ //NOTE this code has to appear before the table's creation because the table relies on the value in the combo box to be created
+        comboBoxPanel = new JPanel();
+        comboBoxPanel.setBackground(Theme.BACKGROUND_GRAY);
+        comboBoxPanel.setLayout(new BoxLayout(comboBoxPanel, BoxLayout.X_AXIS));
+        
+        selectionBox = new JComboBox(comboArray);
+        selectionBox.setToolTipText("Select a range of potential final grade values and press the button to the right");
+        selectionBox.setMaximumSize(selectionBox.getPreferredSize());
+        selectionBox.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        comboLabel = new JLabel("Display table in range of:  ");
+        comboLabel.setForeground(Theme.TEXT_WHITE);
+
+        newTableButton = new JButton("Display Table"); 
+        newTableButton.addActionListener(ntl);
+        newTableButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
+        comboBoxPanel.add(Box.createHorizontalStrut(15));
+        comboBoxPanel.add(comboLabel);
+        comboBoxPanel.add(selectionBox);
+        comboBoxPanel.add(newTableButton);
 
         /* format and create table */
         columnNames = new String[] {"Final Grade", //TODO put teh jtable main display in another file.
@@ -80,26 +101,6 @@ public class DisplayResults extends JPanel {
         table.getTableHeader().setBackground(Theme.TABLE_HEADER_BACKGROUND);
         table.getTableHeader().setForeground(Theme.TABLE_TEXT);
 
-        /* create combo box panel */
-        comboBoxPanel = new JPanel();
-        comboBoxPanel.setBackground(Theme.BACKGROUND_GRAY);
-        comboBoxPanel.setLayout(new BoxLayout(comboBoxPanel, BoxLayout.X_AXIS));
-        
-        selectionBox = new JComboBox(comboArray);
-        selectionBox.setToolTipText("Select a range of potential final grade values and press the button to the right");
-        selectionBox.setMaximumSize(selectionBox.getPreferredSize());
-        selectionBox.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        comboLabel = new JLabel("Display table in range of:  ");
-        comboLabel.setForeground(Theme.TEXT_WHITE);
-
-        newTableButton = new JButton("Display Table"); 
-        newTableButton.addActionListener(ntl);
-        newTableButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-
-        comboBoxPanel.add(Box.createHorizontalStrut(15));
-        comboBoxPanel.add(comboLabel);
-        comboBoxPanel.add(selectionBox);
-        comboBoxPanel.add(newTableButton);
 
         /* create calculate value panel */
         calculateValuesPanel = new JPanel();
@@ -169,8 +170,12 @@ public class DisplayResults extends JPanel {
       @Override
       public void actionPerformed(ActionEvent e) 
       {
-        int s = selectionBox.getSelectedIndex();
-        System.out.println(s);
+        JFrame frame = new JFrame("MATH333 Grade Calculator");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.add(new DisplayResults());
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
       }
     }
 
@@ -222,7 +227,7 @@ public class DisplayResults extends JPanel {
     }
 
 
-    // Custom scrollbar UI class
+    // Custom scrollbar UI class //TODO remove this we dont need it
     class CustomScrollbarUI extends BasicScrollBarUI {
 
         @Override

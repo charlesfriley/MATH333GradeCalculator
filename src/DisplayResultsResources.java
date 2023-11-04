@@ -21,15 +21,17 @@ public class DisplayResultsResources {
     {
         Object[][] objectArray = new Object[21][5];
         
-        int finalGradeIterator = 500; // each itteration, this variable will go from 0% to 5% to 10% and so on by getting multiplied by the row variable below
+        int finalGradeIterator = 25; // each itteration, this variable will go from 0% to 5% to 10% and so on by getting multiplied by the row variable below
 
-        int tempQuizGrade = MainMenu.getMainQuizGrade();
-        int tempTestGrade = MainMenu.getMainTestGrade();
+        int tempNum = DisplayResults.selectionBox.getSelectedIndex() * 5;
+
+        int quizGrade = MainMenu.getMainQuizGrade();
+        int testGrade = MainMenu.getMainTestGrade();
         for (int row = 0; row < 21; row++) {
 
-            int finalGrade = finalGradeIterator * row;
+            int finalGrade = finalGradeIterator * row + tempNum;
 
-            Calculator c = new Calculator(tempQuizGrade, tempTestGrade, finalGrade);
+            Calculator c = new Calculator(quizGrade, testGrade, finalGrade);
 
 
             objectArray[row][0] = intToPercent(finalGrade);
