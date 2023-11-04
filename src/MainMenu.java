@@ -22,7 +22,7 @@ public class MainMenu extends JPanel {
 
     // these variables will be set to whatever value the user puts in the text feilds
     private static int mainQuizGrade, mainTestGrade;
-    
+
     /* constructer */
     /**
      * Constructer for the Main Menu window.
@@ -48,7 +48,7 @@ public class MainMenu extends JPanel {
       inputInfoPanel = new JPanel();
       inputInfoPanel.setLayout(new BoxLayout(inputInfoPanel, BoxLayout.X_AXIS));
       inputInfoPanel.setBackground(Theme.BACKGROUND_GRAY);
-        inputInfoLabel = new JLabel("Please enter your quiz and test grade");
+        inputInfoLabel = new JLabel("Please enter average quiz and test grade");
         inputInfoLabel.setForeground(Theme.TEXT_WHITE);
       inputInfoPanel.add(Box.createHorizontalGlue());
       inputInfoPanel.add(inputInfoLabel);
@@ -65,7 +65,7 @@ public class MainMenu extends JPanel {
         testLabel.setForeground(Theme.TEXT_WHITE);
       fieldLabelPanel.add(Box.createHorizontalGlue());
       fieldLabelPanel.add(quizLabel);
-      fieldLabelPanel.add(Box.createHorizontalStrut(75));
+      fieldLabelPanel.add(Box.createHorizontalStrut(90));
       fieldLabelPanel.add(testLabel);
       fieldLabelPanel.add(Box.createHorizontalGlue());
 
@@ -169,13 +169,12 @@ public class MainMenu extends JPanel {
       {
         setCursorToWait();
 
-        System.out.println("READY");
+
         int userQuizGrade = MainMenuResources.percentToInt(userQuiz);
         int userTestGrade = MainMenuResources.percentToInt(userTest);
 
-        System.out.println(userQuizGrade);
+
         setMainQuizGrade(userQuizGrade);
-        System.out.println(userTestGrade);
         setMainTestGrade(userTestGrade);
         
         JFrame frame = new JFrame("MATH333 Grade Calculator");

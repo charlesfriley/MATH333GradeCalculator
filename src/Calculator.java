@@ -69,9 +69,6 @@ public class Calculator {
                 }
             }
         }
-
-
-        System.out.println("Count: " + counter);
         
 
     }
@@ -105,7 +102,7 @@ public class Calculator {
 
     public static void main(String[] args)
     {
-        Calculator c = new Calculator(9000, 9110, 9500);
+        Calculator c = new Calculator(0020, 20, 25);
         System.out.println("Max Class Grade = " + c.getBestClassGrade() + " with Q = " + c.getBestQuizWeight() + ", T = " + c.getBestTestWeight() + ", and F = " + c.getBestFinalWeight());
     }
 
