@@ -130,7 +130,7 @@ public class DisplayResults extends JPanel {
         southPanel = new JPanel();
         southPanel.setBackground(Theme.BACKGROUND_GRAY);
         southPanel.setLayout(new BoxLayout(southPanel, BoxLayout.Y_AXIS));
-        southPanel.add(comboBoxPanel);
+        // southPanel.add(comboBoxPanel); //FIXME make this work? TODO
         southPanel.add(calculateValuesPanel);
 
 
@@ -153,7 +153,7 @@ public class DisplayResults extends JPanel {
 
         this.add(table.getTableHeader(), BorderLayout.NORTH);
         this.add(table, BorderLayout.CENTER);
-        this.add(southPanel, BorderLayout.SOUTH);
+        // this.add(southPanel, BorderLayout.SOUTH); //FIXME make this work? TODO
         
         // this.add(dataAndButtonPanel);
 
@@ -227,7 +227,7 @@ public class DisplayResults extends JPanel {
 
         JOptionPane.showMessageDialog(null,
             "Please make sure that you entered your numbers\ncorrectly in this format: ##.## (Example: 98.24).", 
-            "Something went wrong...", JOptionPane.INFORMATION_MESSAGE, coolBrillIcon);
+            "PORQUE NO?!", JOptionPane.INFORMATION_MESSAGE, coolBrillIcon);
         }
 
     }

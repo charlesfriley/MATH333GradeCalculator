@@ -195,7 +195,7 @@ public class MainMenu extends JPanel {
 
         JOptionPane.showMessageDialog(null,
           "Please make sure that you entered your numbers\ncorrectly in this format: ##.## (Example: 98.24).", 
-          "Something went wrong...", JOptionPane.INFORMATION_MESSAGE, coolBrillIcon);
+          "PORQUE NO?!", JOptionPane.INFORMATION_MESSAGE, coolBrillIcon);
       }
     }
 
