@@ -21,7 +21,7 @@ public class DisplayResultsResources {
     {
         Object[][] objectArray = new Object[21][5];
         
-        int finalGradeIterator = 25; // each itteration, this variable will go from 0% to 5% to 10% and so on by getting multiplied by the row variable below
+        int finalGradeIterator = 500; // each itteration, this variable will go from 0% to 5% to 10% and so on by getting multiplied by the row variable below
 
         int tempNum = DisplayResults.selectionBox.getSelectedIndex() * 5;
 

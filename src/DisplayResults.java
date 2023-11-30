@@ -63,11 +63,11 @@ public class DisplayResults extends JPanel {
         comboBoxPanel.add(newTableButton);
 
         /* format and create table */
-        columnNames = new String[] {"Final Grade", //TODO put teh jtable main display in another file.
+        columnNames = new String[] {"Grade on Final", //TODO put teh jtable main display in another file.
                                    "Quiz Weight",
                                    "Test Weight",
                                    "Final Weight",
-                                   "Resulting Grade"};
+                                   "Grade for Class"};
 
         data = DisplayResultsResources.makeTableObjectArray();
         // data = new Object[][] { //TODO change to use the calculator class
@@ -170,13 +170,19 @@ public class DisplayResults extends JPanel {
       @Override
       public void actionPerformed(ActionEvent e) 
       {
-        JFrame frame = new JFrame("MATH333 Grade Calculator");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(new DisplayResults());
-        frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
-      }
+        //FIXME TODO HELP I need help to make this happen.
+            //what i want to happen is the table in the code is replaced by a new table in that range.
+        //TODO TODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODO
+        //TODO TODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODO
+        //TODO TODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODO
+        //TODO TODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODO
+        //TODO TODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODO
+        //TODO TODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODO
+        //TODO TODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODO
+        //TODO TODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODO
+        //TODO TODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODO
+
+        }
     }
 
     /**

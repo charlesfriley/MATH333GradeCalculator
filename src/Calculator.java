@@ -64,7 +64,10 @@ public class Calculator {
                         bestQuizWeight = Q;
                         bestTestWeight = T;
                         bestFinalWeight = F;
+                        // System.out.println("Max Class Grade so far = " + bestClassGrade + " with Q = " + bestQuizWeight + ", T = " + bestTestWeight + ", and F = " + bestFinalWeight);
+                        // System.out.println(counter);
                     }
+                    // System.out.println(iteratedClassGrade);
                     counter++;
                 }
             }
@@ -102,7 +105,7 @@ public class Calculator {
 
     public static void main(String[] args)
     {
-        Calculator c = new Calculator(0020, 20, 25);
+        Calculator c = new Calculator(9708, 8850, 10000);
         System.out.println("Max Class Grade = " + c.getBestClassGrade() + " with Q = " + c.getBestQuizWeight() + ", T = " + c.getBestTestWeight() + ", and F = " + c.getBestFinalWeight());
     }
 
